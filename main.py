@@ -38,20 +38,20 @@ def giveChocolate(chocolates, children):
     children = list(filter(lambda a: a != 0, children))
 
     cuts = 0
-    c = 0
-    while c < len(children):
+    while 0 < len(children):
 
         for p in range(len(chocolates)):
-            diff = getDiff(children[c], chocolates[p])
+            diff = getDiff(children[0], chocolates[p])
 
             if diff < 0:
-                children[c] = children[c] - chocolates[p]
+                children[0] = children[0] - chocolates[p]
                 chocolates.pop(p)
                 chocolates.append(abs(diff))
                 children.sort(reverse=True)
                 break
             else:
-                children.pop(c)
+    
+                children.pop(0)
                 
                 chocolates.pop(p)
                 chocolates.append(abs(diff))
@@ -60,7 +60,6 @@ def giveChocolate(chocolates, children):
                     cuts = cuts + 1
 
                 break
-
     return cuts
 
 def getDiff(child, bar):
